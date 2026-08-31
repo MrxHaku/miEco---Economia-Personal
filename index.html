@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>miEco — Economía Personal</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=28">
+</head>
+<body> 
+  <body>
+  <div id="emailVerifyBanner" class="verify-banner hidden">
+      <p>⚠️ Tu cuenta no está verificada. Los datos no se sincronizarán en la nube hasta que confirmes tu correo.</p>
+      <button id="resendVerifyEmail" class="link-btn-white">Reenviar correo</button>
+  </div>
+  <!-- ... resto de tu código ... -->
+  <!-- PANTALLA DE AUTENTICACIÓN (LOGIN / REGISTRO) -->
+  <section class="auth-wrapper" id="authScreen">
+    <div class="auth-visual">
+  <!-- Reemplazamos <div class="auth-visual-mark">🌱</div> por esto: -->
+  <img src="Media/miEcoLogo.png" alt="miEco Logo" class="auth-logo-img">
+  <h2>miEco</h2>
+  <p>Claridad en medio del caos financiero.</p>
+</div>
+
+    <div class="auth-card">
+      <!-- Formulario de Iniciar Sesión -->
+      <form class="auth-form" id="loginForm">
+        <h2>Bienvenido de nuevo</h2>
+        <p class="auth-sub">Ingresa para gestionar tus finanzas en la nube.</p>
+
+        <div class="auth-social">
+          <button type="button" class="social-btn" id="googleAuthButton">
+            <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.1 8.1 3l6-6C34.5 5.5 29.6 3.5 24 3.5 12.7 3.5 3.5 12.7 3.5 24S12.7 44.5 24 44.5 44.5 35.3 44.5 24c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13.5 24 13.5c3.1 0 5.9 1.1 8.1 3l6-6C34.5 6.5 29.6 4.5 24 4.5c-7.5 0-13.9 4.3-17.1 10.6z"/><path fill="#4CAF50" d="M24 44.5c5.5 0 10.4-1.9 14.1-5.1l-6.5-5.5c-2 1.4-4.6 2.3-7.6 2.3-5.3 0-9.7-3.4-11.3-8.1l-6.5 5C9.9 40.1 16.4 44.5 24 44.5z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.5 5.5c-.5.4 6.8-5 6.8-15.6 0-1.2-.1-2.4-.4-3.5z"/></svg>
+            Google
+          </button>
+          <button type="button" class="social-btn" id="appleAuthButton">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.415 2.09-1.245 2.85-.9.85-1.99 1.35-3.13 1.25-.14-1.14.42-2.29 1.25-3.03.87-.79 2.11-1.32 3.12-1.07zM20.7 17.15c-.55 1.27-.82 1.84-1.53 2.96-1 1.56-2.4 3.51-4.13 3.53-1.55.02-1.95-1.01-4.05-1-2.1.01-2.55 1.02-4.1 1-1.73-.02-3.06-1.77-4.06-3.33C.24 16.62-.63 12.03 1 9.19c1.16-2 2.99-3.16 4.7-3.16 1.71 0 2.79 1.01 4.2 1.01 1.37 0 2.21-1.02 4.19-1.02 1.44 0 2.97.78 4.06 2.14-3.57 1.95-2.99 6.98.55 8.99z"/></svg>
+            Apple
+          </button>
+        </div>
+        <div class="auth-divider"><span>o</span></div>
+        
+
+        <label>Correo electrónico
+          <input type="email" id="loginEmail" placeholder="tu@email.com" required>
+        </label>
+        <label>Contraseña
+          <input type="password" id="loginPassword" placeholder="••••••••" required>
+        </label>
+
+        <button class="small-btn full-btn" type="submit">Ingresar <span>→</span></button>
+        <button class="link-btn" type="button" id="forgotPasswordLink">¿Olvidaste tu contraseña?</button>
+        <p class="auth-switch">¿No tienes cuenta? <button type="button" id="tabRegisterBtn">Crea una</button></p>
+      </form>
+
+      <!-- Formulario de Registro -->
+      <form class="auth-form hidden" id="registerForm">
+        <h2>Crea tu cuenta</h2>
+        <p class="auth-sub">Ingresa tus datos personales para crear tu cuenta.</p>
+
+        <div class="auth-social">
+          <button type="button" class="social-btn" id="googleAuthButtonRegister">
+            <svg viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.1 8.1 3l6-6C34.5 5.5 29.6 3.5 24 3.5 12.7 3.5 3.5 12.7 3.5 24S12.7 44.5 24 44.5 44.5 35.3 44.5 24c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.6 15.9 18.9 13.5 24 13.5c3.1 0 5.9 1.1 8.1 3l6-6C34.5 6.5 29.6 4.5 24 4.5c-7.5 0-13.9 4.3-17.1 10.6z"/><path fill="#4CAF50" d="M24 44.5c5.5 0 10.4-1.9 14.1-5.1l-6.5-5.5c-2 1.4-4.6 2.3-7.6 2.3-5.3 0-9.7-3.4-11.3-8.1l-6.5 5C9.9 40.1 16.4 44.5 24 44.5z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.2 4.2-4.1 5.6l6.5 5.5c-.5.4 6.8-5 6.8-15.6 0-1.2-.1-2.4-.4-3.5z"/></svg>
+            Google
+          </button>
+          <button type="button" class="social-btn" id="appleAuthButtonRegister">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.365 1.43c0 1.14-.415 2.09-1.245 2.85-.9.85-1.99 1.35-3.13 1.25-.14-1.14.42-2.29 1.25-3.03.87-.79 2.11-1.32 3.12-1.07zM20.7 17.15c-.55 1.27-.82 1.84-1.53 2.96-1 1.56-2.4 3.51-4.13 3.53-1.55.02-1.95-1.01-4.05-1-2.1.01-2.55 1.02-4.1 1-1.73-.02-3.06-1.77-4.06-3.33C.24 16.62-.63 12.03 1 9.19c1.16-2 2.99-3.16 4.7-3.16 1.71 0 2.79 1.01 4.2 1.01 1.37 0 2.21-1.02 4.19-1.02 1.44 0 2.97.78 4.06 2.14-3.57 1.95-2.99 6.98.55 8.99z"/></svg>
+            Apple
+          </button>
+        </div>
+        <div class="auth-divider"><span>o</span></div>
+
+        <label>Nombre completo
+          <input type="text" id="registerName" placeholder="Ej. Alex" required>
+        </label>
+        <label>Correo electrónico
+          <input type="email" id="registerEmail" placeholder="tu@email.com" required>
+        </label>
+        <label>Contraseña
+          <input type="password" id="registerPassword" placeholder="Mínimo 6 caracteres" minlength="6" required>
+        </label>
+
+        <button class="small-btn full-btn" type="submit">Crear cuenta <span>＋</span></button>
+        <p class="auth-switch">¿Ya tienes cuenta? <button type="button" id="tabLoginBtn">Inicia sesión</button></p>
+      </form>
+
+      <!-- Recuperar contraseña -->
+      <form class="auth-form hidden" id="forgotForm">
+        <h2>Recuperar acceso</h2>
+        <p class="auth-sub">Te enviaremos un enlace a tu correo para restablecer la contraseña.</p>
+        <label>Correo electrónico
+          <input type="email" id="forgotEmail" placeholder="tu@email.com" required>
+        </label>
+        <button class="small-btn full-btn" type="submit">Enviar enlace <span>✉️</span></button>
+        <button class="link-btn" type="button" id="backToLoginLink">← Volver a iniciar sesión</button>
+      </form>
+
+      <!-- Definir nueva contraseña -->
+      <form class="auth-form hidden" id="resetPasswordForm">
+        <h2>Nueva contraseña</h2>
+        <p class="auth-sub">Ingresa tu nueva contraseña para tu cuenta miEco.</p>
+        <label>Nueva contraseña
+          <input type="password" id="newPassword" placeholder="Mínimo 6 caracteres" minlength="6" required>
+        </label>
+        <button class="small-btn full-btn" type="submit">Guardar nueva contraseña <span>✓</span></button>
+      </form>
+
+      <div class="auth-feedback" id="authFeedback"></div>
+      <p class="auth-legal-links">Al registrarte aceptas nuestra <a href="legal.html#privacidad">Política de Privacidad</a> y <a href="legal.html#terminos">Términos de Servicio</a>.</p>
+    </div>
+  </section>
+
+  <!-- CONTENIDO PRINCIPAL DE LA APP -->
+  <main class="wrap hidden" id="appMain">
+    <section class="card">
+      <header class="topbar">
+        <div class="logo">
+          <div class="logo-wrapper">
+            <img src="Media/miEcoLogo.png" alt="miEco Logo" class="app-logo-img">
+            <b>miEco</b>
+          </div>
+            <span>economía personal</span>
+        </div>
+        <div class="ticker">
+          <div class="ticker-track">
+            <span>🤲 “Jehová es mi pastor; nada me faltará.” · Salmo 23:1</span>
+            <span>🌾 “Mi Dios suplirá todo lo que os falta.” · Filipenses 4:19</span>
+            <span>🏠 “Jehová proveerá.” · Génesis 22:14</span>
+            <span>🤲 “Jehová es mi pastor; nada me faltará.” · Salmo 23:1</span>
+            <span>🌾 “Mi Dios suplirá todo lo que os falta.” · Filipenses 4:19</span>
+            <span>🏠 “Jehová proveerá.” · Génesis 22:14</span>
+          </div>
+        </div>
+        <div class="topbar-actions">
+          <button class="toggle" id="currencyButton" type="button">
+            <span id="currencyLabel">COP $</span>
+            <span>⇄</span>
+          </button>
+          <div class="user-greeting" id="userGreeting">Hola 👋 <span id="userNameGreeting">@usuario</span></div>
+        </div>
+        <div id="syncIndicator" class="sync-badge online" title="Sincronizado con la nube">
+          <span class="sync-dot"></span>
+          <span id="syncText">En línea</span>
+        </div>
+      </header>
+
+      <div class="app-layout">
+        <aside class="sidebar">
+          <div class="sidebar-top">
+            <button class="navcard nc-blue active" data-view="home" title="Inicio" aria-label="Inicio">
+              <span class="t">🏠</span>
+            </button>
+            <button class="navcard nc-yellow" data-view="expenses" title="Gastos" aria-label="Gastos">
+              <span class="t">🧾</span>
+            </button>
+            <button class="navcard" data-view="savings" title="Ahorro" aria-label="Ahorro">
+              <span class="t">🐷</span>
+            </button>
+            <button class="navcard" data-view="budgets" title="Presupuestos" aria-label="Presupuestos">
+              <span class="t">🎯</span>
+            </button>
+            <button class="navcard" data-view="profile" title="Perfil" aria-label="Perfil">
+              <span class="t">👤</span>
+            </button>
+          </div>
+          <div class="sidebar-bottom">
+            <button class="navcard" id="configButton" title="Configuración" aria-label="Configuración">
+              <span class="t">⚙️</span>
+            </button>
+            <button class="navcard" id="downloadButton" title="Descargar balance general" aria-label="Descargar balance general">
+              <span class="t">📥</span>
+            </button>
+            <button class="navcard" id="clearButton" title="Eliminar datos del mes" aria-label="Eliminar datos del mes">
+              <span class="t">🗑️</span>
+            </button>
+            <button class="navcard navcard-logout" id="logoutButton" title="Cerrar sesión" aria-label="Cerrar sesión">
+              <span class="t">🚪</span>
+            </button>
+          </div>
+        </aside>
+
+        <main class="views">
+          <section class="view active" id="view-home">
+            <div class="top-row">
+              <div class="left-col">
+                <section class="balance-card" aria-label="Balance general">
+                  <div class="balance-label">Balance general</div>
+                  <div class="balance-value" id="generalBalance">$0</div>
+                  <div class="balance-caption">total de dinero disponible</div>
+                </section>
+                <section class="content">
+                  <div class="period-line-header">
+                    <button class="period-btn" id="periodPickerBtn" type="button" aria-label="Cambiar mes o año">
+                      📅 <span class="period-copy">Septiembre 2026</span> <span class="period-chevron">▾</span>
+                    </button>
+                    <div class="today-badge" id="todayBadge">00/00</div>
+                  </div>
+                  <div class="quick-actions">
+                    <section class="goal-card">
+                      <div class="goal-heading"><span>Meta</span><button class="goal-add" id="goalButton" type="button" aria-label="Definir meta de ahorro">＋</button></div>
+                      <div class="goal-value" id="goalValue">$0/$0</div>
+                      <div class="goal-track"><i id="goalProgress"></i></div>
+                      <div class="goal-caption" id="goalCaption">Define una meta de ahorro</div>
+                    </section>
+                    <section class="income-card">
+                      <div class="goal-heading"><span>Ingresos</span><button class="goal-add" id="incomeAddButton" type="button" aria-label="Añadir ingreso">＋</button></div>
+                      <div class="income-card-value" id="incomeCardValue">$0</div>
+                      <div class="income-card-caption">total recibido este mes</div>
+                    </section>
+                  </div>
+                  <div class="income-list" id="incomeList"></div>
+                </section>
+              </div>
+              <div class="top-side">
+                <section class="visual">
+                  <div class="flow-chart">
+                    <h2 id="flowTitle">Resumen Mensual</h2>
+                    <div class="pie-area">
+                      <svg class="pie" id="flowPie" viewBox="0 0 200 200" role="img" aria-label="Resumen del mes">
+                        <g id="pieSegments"></g>
+                      </svg>
+                      <div class="pie-center-hole"></div>
+                      <div class="pie-tooltip" id="pieTooltip"></div>
+                    </div>
+                    
+                    <div class="flow-total-box">
+                      <div class="flow-total" id="flowTotal">$0</div>
+                      <div class="flow-caption">disponible este mes</div>
+                    </div>
+
+                    <div class="pie-legend">
+                      <div class="legend-item"><span class="legend-dot available-dot"></span>Disponible</div>
+                      <div class="legend-item"><span class="legend-dot expense-dot"></span>Gastos</div>
+                      <div class="legend-item" id="legendTitheItem"><span class="legend-dot tithe-dot" id="legendTitheDot"></span><span id="legendTitheLabel">Diezmo</span></div>
+                      <div class="legend-item"><span class="legend-dot savings-dot"></span>Ahorro</div>
+                    </div>
+                  </div>
+                </section>
+                <section class="cards-panel" aria-label="Mis tarjetas">
+                  <div class="cards-panel-heading">
+                    <div><span class="section-kicker">Billetera</span><h2>Mis tarjetas</h2></div>
+                    <div class="cards-panel-actions">
+                      <span class="cards-hint">Desliza o toca para explorar</span>
+                      <button class="wallet-add-btn" id="addCardButton" type="button" aria-label="Agregar cuenta" title="Agregar cuenta">＋</button>
+                    </div>
+                  </div>
+                  <div class="cards-stack" id="cardsStack"></div>
+                </section>
+              </div>
+            </div>
+            <div class="stats">
+              <div class="stat bar-lime">
+                <div class="label">💰 Entró</div>
+                <div class="value" id="totalIncome">$0</div>
+              </div>
+              <div class="stat bar-white">
+                <div class="label">🧾 Gastado</div>
+                <div class="value" id="totalExpenses">$0</div>
+              </div>
+              <div class="stat bar-purple">
+                <div class="label" id="titheStatLabel">🙏 Diezmo</div>
+                <div class="value" id="totalTithe">$0</div>
+              </div>
+              <div class="stat bar-fuchsia">
+                <div class="label">🌱 Ahorro</div>
+                <div class="value" id="totalAvailable">$0</div>
+              </div>
+            </div>
+          </section>
+
+          <section class="view" id="view-expenses">
+            <div class="view-heading">
+              <div>
+                <button class="period-btn" id="periodPickerBtnExpenses" type="button">
+                  📅 <span class="period-copy">Septiembre 2026</span> <span class="period-chevron">▾</span>
+                </button>
+                <h1>Registrar gastos</h1>
+                <p class="lead">Ordena cada salida por medio de pago y categoría para ver en qué se está usando el dinero.</p>
+              </div>
+              <div class="view-total">
+                <span>Total gastado</span>
+                <strong id="expenseViewTotal">$0</strong>
+              </div>
+            </div>
+            <div class="expense-layout">
+              <section class="tblcard">
+                <div class="section-heading">
+                  <div>
+                    <h3>🧾 Nuevo gasto</h3>
+                    <div class="tsub">Registra compras, servicios, retiros o transferencias.</div>
+                  </div>
+                </div>
+                <div class="ocr-scan">
+                  <input type="file" id="receiptInput" accept="image/*" capture="environment" class="hidden">
+                 <button class="small-btn ocr-btn" type="button" id="scanReceiptButton">📷 Escanear tiquete <span class="pro-badge">PRO</span></button>
+                  <span class="ocr-status" id="ocrStatus"></span>
+                </div>
+                <form class="expense-form" id="expenseForm">
+                  <label>¿Qué pagaste?<input id="expenseName" type="text" placeholder="Ej. mercado, arriendo" required></label>
+                  <label>Valor<input id="expenseAmount" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off" required></label>
+                  <label>Fecha<input id="expenseDate" type="date"></label>
+                  <label>Medio de pago<select id="expenseType">
+                    <option value="💵 Efectivo">💵 Efectivo</option>
+                    <option value="🔁 Transferencia">🔁 Transferencia</option>
+                    <option value="🏧 Cajero">🏧 Cajero</option>
+                  </select></label>
+                  <label>Categoría<select id="expenseCategory">
+                    <option>🏠 Vivienda</option>
+                    <option>💡 Servicios</option>
+                    <option>🚌 Transporte</option>
+                    <option>🍎 Alimentación</option>
+                    <option>🩺 Salud</option>
+                    <option>🎉 Ocio</option>
+                    <option>👕 Ropa</option>
+                    <option>🎬 Cine</option>
+                    <option>💻 Licencias</option>
+                    <option>🤝 Préstamo</option>
+                    <option>💳 Deudas</option>
+                    <option>📦 Otros</option>
+                  </select></label>
+                  <label class="recurring-check"><input type="checkbox" id="expenseRecurring"><span>🔁 Repetir cada mes</span></label>
+                  <button class="small-btn" type="submit">Guardar gasto <span>＋</span></button>
+                </form>
+                <div class="expense-list" id="expenseList"></div>
+                <div class="expense-usage">
+                  <div class="progress-label">
+                    <span>Uso del dinero del mes</span>
+                    <span id="usageLabel">0%</span>
+                  </div>
+                  <div class="progress">
+                    <div id="usageBar"></div>
+                  </div>
+                </div>
+              </section>
+              <section class="tblcard category-card">
+                <div class="section-heading">
+                  <div>
+                    <h3>📊 Categorías</h3>
+                    <div class="tsub">De mayor a menor gasto.</div>
+                  </div>
+                </div>
+                <div class="category-list" id="categoryList"></div>
+                <div class="section-heading recurring-heading">
+                  <div>
+                    <h3>🔁 Recurrentes</h3>
+                    <div class="tsub">Se repiten automáticamente cada mes.</div>
+                  </div>
+                </div>
+                <div class="recurring-list" id="recurringList"></div>
+              </section>
+            </div>
+
+            <section class="tithe-focus tblcard">
+              <div class="section-heading">
+                <div>
+                  <h3 id="titheViewTitle">🙏 Solo diezmo</h3>
+                  <div class="tsub" id="titheViewLead">Una vista tranquila para separar con claridad el diezmo de los ingresos del hogar.</div>
+                </div>
+                <div class="tithe-verse" id="titheVerse">“Honra a Jehová con tus bienes.”<small>Proverbios 3:9</small></div>
+              </div>
+              <div class="tithe-big">
+                <span id="titheBigLabel">🙏 10% de los ingresos</span>
+                <strong id="titheValue">$0</strong>
+                <label class="check-label">
+                  <input id="tithePaid" type="checkbox"> <span id="tithePaidLabel">Ya lo entregué</span></label>
+              </div>
+              <p class="mini-note" id="titheNote">Registra tus ingresos para calcular el diezmo.</p>
+              <div class="church-giving" id="churchGivingBox">
+                <div>
+                  <strong>Consignar diezmo a la iglesia</strong>
+                  <span>Realiza tu aporte de forma virtual en la Iglesia del Nazareno Cali.</span>
+                </div>
+                <a class="giving-button" href="https://www.nazarenocali.org/donaciones-virtuales/" target="_blank" rel="noopener noreferrer">Ir a donaciones <span>↗</span></a>
+              </div>
+            </section>
+          </section>
+
+          <section class="view" id="view-savings">
+            <div class="view-heading">
+              <div>
+                <button class="period-btn" id="periodPickerBtnSavings" type="button">
+                  📅 <span class="period-copy">Septiembre 2026</span> <span class="period-chevron">▾</span>
+                </button>
+                <h1>Ahorro</h1>
+                <p class="lead">Aparta dinero cada mes sin mezclarlo con los gastos.</p>
+              </div>
+              <div class="view-total savings-total-card">
+                <span>Ahorro total acumulado</span>
+                <strong id="savingsGrandTotal">$0</strong>
+              </div>
+            </div>
+            <div class="expense-layout">
+              <section class="tblcard">
+                <div class="section-heading">
+                  <div>
+                    <h3>🐷 Ahorro voluntario</h3>
+                    <div class="tsub">Separa una parte de tu disponible de este mes.</div>
+                  </div>
+                </div>
+                <div class="fixed-expenses">
+                  <div class="fixed-heading"><strong>🧳 Reserva laboral (ahorro obligatorio)</strong><span>Automática · 1 SMMLV</span></div>
+                  <div class="fixed-row"><span>Acumulada hasta este mes<small>Cesantías, intereses, prima y vacaciones de meses pagados</small></span><strong id="laborReserveAccumValue">$0</strong></div>
+                </div>
+                <form class="expense-form" id="savingsForm">
+                  <label>¿Para qué ahorras?<input id="savingsName" type="text" placeholder="Ej. vacaciones, emergencia" required></label>
+                  <label>Cuánto separas<input id="savingsAmount" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off" required></label>
+                  <button class="small-btn" type="submit">Guardar ahorro <span>＋</span></button>
+                </form>
+                <div class="expense-list" id="savingsList"></div>
+              </section>
+              <section class="tblcard category-card">
+                <div class="section-heading">
+                  <div>
+                    <h3>📊 Resumen mensual</h3>
+                    <div class="tsub">Lo que se ha añadido cada mes (reserva + voluntario).</div>
+                  </div>
+                </div>
+                <div class="category-list" id="savingsSummary"></div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view" id="view-budgets">
+            <div class="view-heading">
+              <div>
+                <button class="period-btn" id="periodPickerBtnBudgets" type="button">
+                  📅 <span class="period-copy">Septiembre 2026</span> <span class="period-chevron">▾</span>
+                </button>
+                <h1>Presupuestos</h1>
+                <p class="lead">Define un tope de gasto por categoría y recibe una alerta visual cuando te acerques al límite.</p>
+              </div>
+            </div>
+            <div class="expense-layout">
+              <section class="tblcard">
+                <div class="section-heading">
+                  <div>
+                    <h3>🎯 Definir presupuesto</h3>
+                    <div class="tsub">Elige una categoría y su límite mensual.</div>
+                  </div>
+                </div>
+                <form class="expense-form" id="budgetForm">
+                  <label>Categoría<select id="budgetCategory">
+                    <option>🏠 Vivienda</option>
+                    <option>💡 Servicios</option>
+                    <option>🚌 Transporte</option>
+                    <option>🍎 Alimentación</option>
+                    <option>🩺 Salud</option>
+                    <option>🎉 Ocio</option>
+                    <option>👕 Ropa</option>
+                    <option>🎬 Cine</option>
+                    <option>💻 Licencias</option>
+                    <option>🤝 Préstamo</option>
+                    <option>💳 Deudas</option>
+                    <option>📦 Otros</option>
+                  </select></label>
+                  <label>Límite mensual<input id="budgetAmount" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off" required></label>
+                  <button class="small-btn" type="submit">Guardar límite <span>＋</span></button>
+                </form>
+              </section>
+              <section class="tblcard category-card">
+                <div class="section-heading">
+                  <div>
+                    <h3>📊 Ejecutado vs. presupuestado</h3>
+                    <div class="tsub">Verde &lt;50% · Amarillo &gt;80% · Rojo 100%+</div>
+                  </div>
+                </div>
+                <div class="category-list" id="budgetList"></div>
+              </section>
+              <section class="tblcard category-card">
+                <div class="section-heading">
+                  <div>
+                    <h3>📈 Proyección de flujo de caja</h3>
+                    <div class="tsub">Compromisos fijos y recurrentes para los próximos meses, sin contar ingresos futuros.</div>
+                  </div>
+                </div>
+                <div class="category-list" id="projectionList"></div>
+              </section>
+            </div>
+          </section>
+
+          <section class="view" id="view-profile">
+            <div class="view-heading">
+              <div>
+                <div class="pill">👤 <span>Tu cuenta</span></div>
+                <h1>Perfil de usuario</h1>
+                <p class="lead">Información de tu cuenta en miEco.</p>
+              </div>
+            </div>
+            <section class="tblcard profile-card">
+              <div class="profile-row"><span>Nombre / apodo</span><strong id="profileDisplayName">—</strong></div>
+              <div class="profile-row">
+    <span>Estado del plan</span>
+    <strong id="profilePlanStatus" class="plan-badge">Cargando...</strong>
+  </div>
+              <div class="profile-row"><span>Correo electrónico</span><strong id="profileEmail">—</strong></div>
+              <div class="profile-row"><span>Cuenta creada</span><strong id="profileCreatedAt">—</strong></div>
+              <button class="small-btn" type="button" id="profileConfigButton">Editar apodo <span>⚙️</span></button>
+            </section>
+
+            <section class="tblcard">
+              <div class="section-heading">
+                <div>
+                  <h3>📤 Exportar datos</h3>
+                  <div class="tsub">Descarga un reporte por rango de meses, en el formato que prefieras.</div>
+                </div>
+              </div>
+              <div class="export-controls">
+                <label>Desde<select id="exportFromMonth"></select></label>
+                <label>Hasta<select id="exportToMonth"></select></label>
+                <label>Formato<select id="exportFormat">
+                  <option value="csv">CSV (Excel)</option>
+                  <option value="json">JSON (respaldo completo)</option>
+                </select></label>
+                <button class="small-btn" type="button" id="exportRangeButton">Descargar <span>📥</span></button>
+              </div>
+            </section>
+
+            <section class="tblcard frequency-card">
+              <div class="section-heading">
+                <div>
+                  <h3>〰️ Frecuencia de movimientos</h3>
+                  <div class="tsub">La línea une la cantidad de movimientos de cada día del mes.</div>
+                </div>
+                <div class="wave-key">
+                  <label><input type="checkbox" id="showIncomeWave" checked><i class="key-income"></i>Ingresos</label>
+                  <label><input type="checkbox" id="showExpenseWave" checked><i class="key-expense"></i>Gastos</label>
+                </div>
+              </div>
+              <div class="wave-chart-container">
+                <svg class="wave-chart" id="waveChart" viewBox="0 0 950 250" role="img" aria-label="Frecuencia diaria de ingresos y gastos"></svg>
+              </div>
+            </section>
+          </section>
+        </main>
+      </div>
+
+      <footer class="app-footer">
+        <p class="footer-supabase-info">
+          ☁️ Los datos están protegidos y sincronizados en tiempo real en la nube mediante <strong>Supabase</strong>.
+        </p>
+        <p class="footer-backup-info">
+          📥 <strong>Copia de seguridad:</strong> Cada cambio se guarda automáticamente. Si deseas exportar tus registros, utiliza el botón <span class="footer-emoji-download">📥</span> en la barra de navegación.
+        </p>
+        <p class="footer-legal-links">
+          <a href="legal.html#privacidad">Política de Privacidad</a> · <a href="legal.html#terminos">Términos de Servicio</a> · <a href="mailto:soporte@mieco.app">Soporte</a>
+        </p>
+      </footer>
+    </section>
+
+    <!-- MODAL CALENDARIO / SELECTOR DE MES Y AÑO -->
+    <dialog class="action-modal calendar-modal" id="calendarModal">
+      <div class="modal-content">
+        <div class="modal-heading">
+          <div>
+            <span class="modal-kicker">Período</span>
+            <h2>Seleccionar mes</h2>
+          </div>
+          <button class="modal-close" type="button" data-close-modal="calendarModal" aria-label="Cerrar">×</button>
+        </div>
+        
+        <div class="calendar-year-nav">
+          <button type="button" class="year-nav-btn" id="prevYearBtn">←</button>
+          <span class="calendar-year-title" id="calendarYearDisplay">2026</span>
+          <button type="button" class="year-nav-btn" id="nextYearBtn">→</button>
+        </div>
+
+        <div class="calendar-months-grid" id="calendarMonthsGrid"></div>
+      </div>
+    </dialog>
+
+    <dialog class="action-modal" id="configModal">
+      <form class="modal-content" id="configForm">
+        <div class="modal-heading"><div><span class="modal-kicker">Ajustes</span><h2>Configuración</h2></div><button class="modal-close" type="button" data-close-modal="configModal" aria-label="Cerrar">×</button></div>
+        <p class="modal-copy">Personaliza cómo te saluda miEco y tus preferencias de gestión.</p>
+        <label>Nombre o apodo<input id="configUsernameInput" type="text" placeholder="Tu nombre o apodo"></label>
+        <label class="toggle-option">
+          <span>Gestionar Diezmo sobre ingresos</span>
+          <input type="checkbox" id="configTitheToggle" checked>
+        </label>
+        <button class="small-btn" type="submit">Guardar cambios <span>＋</span></button>
+      </form>
+    </dialog>
+
+    <dialog class="action-modal" id="multiGoalModal">
+      <form class="modal-content" id="multiGoalForm">
+        <div class="modal-heading">
+          <div><span class="modal-kicker">Ahorro</span><h2>Nueva Meta</h2></div>
+          <button class="modal-close" type="button" onclick="$('multiGoalModal').close()">×</button>
+        </div>
+        <label>Nombre de la meta<input id="goalName" type="text" placeholder="Ej. Fondo de Emergencia" required></label>
+        <label>Valor objetivo<input id="goalTarget" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" required></label>
+        <label>Color<input id="goalColor" type="color" value="#D6FB3D"></label>
+        <button class="small-btn" type="submit">Crear meta <span>＋</span></button>
+      </form>
+    </dialog>
+
+    <dialog class="action-modal" id="incomeModal">
+      <form class="modal-content" id="incomeForm">
+        <div class="modal-heading"><div><span class="modal-kicker">Movimiento</span><h2>Añadir ingreso</h2></div><button class="modal-close" type="button" data-close-modal="incomeModal" aria-label="Cerrar">×</button></div>
+        <p class="modal-copy">Registra el dinero que recibiste y su origen.</p>
+        <label>💵 Valor<input id="incomeAmount" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off" required></label>
+        <label>¿De dónde viene?<input id="incomeName" type="text" placeholder="Ej. trabajo, venta, regalo" required></label>
+        <button class="small-btn" type="submit">Guardar ingreso <span>＋</span></button>
+      </form>
+    </dialog>
+
+    <dialog class="action-modal card-modal" id="cardModal">
+      <form class="modal-content" id="cardForm">
+        <div class="modal-heading modal-heading-with-card">
+          <div>
+            <span class="modal-kicker" id="cardModalKicker">Tarjeta</span>
+            <h2 id="cardModalTitle">Configurar tarjeta</h2>
+          </div>
+          <button class="modal-close" type="button" data-close-modal="cardModal" aria-label="Cerrar">×</button>
+        </div>
+        <p class="modal-copy" id="cardModalCopy">Actualiza el saldo inicial o registra un gasto en esta tarjeta.</p>
+        <div class="credit-debt-line hidden" id="cardDebtLine"><span>💳 Deuda actual</span><strong id="cardDebtValue">$0</strong></div>
+        <label>Saldo inicial<input id="cardBalanceInput" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off" required></label>
+        <label>Nuevo gasto<input id="cardExpenseAmount" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off"></label>
+        <label>¿Qué pagaste?<input id="cardExpenseName" type="text" placeholder="Ej. mercado, transporte"></label>
+        <label>Categoría<select id="cardExpenseCategory">
+          <option>🏠 Vivienda</option><option>💡 Servicios</option><option>🚌 Transporte</option><option>🍎 Alimentación</option><option>🩺 Salud</option><option>🎉 Ocio</option><option>👕 Ropa</option><option>🎬 Cine</option><option>💻 Licencias</option><option>🤝 Préstamo</option><option>💳 Deudas</option><option>📦 Otros</option>
+        </select></label>
+        <button class="small-btn" type="submit">Guardar cambios <span>＋</span></button>
+        <button class="remove-card-btn hidden" type="button" id="removeCardButton">🗑️ Eliminar esta cuenta</button>
+      </form>
+    </dialog>
+
+    <dialog class="action-modal" id="addCardModal">
+      <form class="modal-content" id="addCardForm">
+        <div class="modal-heading"><div><span class="modal-kicker">Billetera</span><h2>Nueva cuenta</h2></div><button class="modal-close" type="button" data-close-modal="addCardModal" aria-label="Cerrar">×</button></div>
+        <p class="modal-copy">Agrega una cuenta o tarjeta propia a tu billetera.</p>
+        <label>Nombre<input id="newCardName" type="text" placeholder="Ej. Davivienda" required></label>
+        
+        <div class="form-row-2">
+          <label>Marca
+            <select id="newCardBrand">
+              <option value="Visa">Visa</option>
+              <option value="Mastercard">Mastercard</option>
+              <option value="">Otra / Ninguna</option>
+            </select>
+          </label>
+          <label>Últimos 4 números
+            <input id="newCardLast4" type="text" placeholder="Ej. 1234" maxlength="4" pattern="\d{4}">
+          </label>
+        </div>
+        
+        <div class="form-row-2">
+          <label>Moneda
+            <select id="newCardCurrency">
+              <option value="COP">COP</option>
+              <option value="USD">USD</option>
+            </select>
+          </label>
+          <label>Saldo inicial
+            <input id="newCardInitial" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off">
+          </label>
+        </div>
+
+        <label>Tipo de cuenta<select id="newCardType">
+          <option value="debito">Débito / Efectivo</option>
+          <option value="credito">Tarjeta de crédito</option>
+        </select></label>
+
+        <div class="credit-fields hidden" id="creditFields">
+          <p class="modal-copy">Con esto, miEco calcula tu deuda real (cupo - disponible) y la suma al total de deudas.</p>
+          <div class="form-row-2">
+            <label>Cupo total<input id="newCardCupo" class="money-input" type="text" inputmode="numeric" placeholder="$ 0" autocomplete="off"></label>
+            <label>Fecha de corte (día)<input id="newCardCorte" type="number" min="1" max="31" placeholder="Ej. 15"></label>
+          </div>
+          <label>Tasa de interés anual (%)<input id="newCardInteres" type="number" step="0.1" min="0" placeholder="Ej. 28.5"></label>
+        </div>
+
+        <label>Color de la tarjeta<select id="newCardColor">
+          <option value="0">Morado Neón</option>
+          <option value="1">Verde Esmeralda</option>
+          <option value="2">Fucsia Intenso</option>
+          <option value="3">Naranja Dorado</option>
+          <option value="4">Menta Suave</option>
+          <option value="5">Azul Océano</option>
+          <option value="6">Rojo Carmesí</option>
+          <option value="7">Negro Carbón</option>
+          <option value="8">Gris Plata</option>
+          <option value="9">Rosa Pastel</option>
+        </select></label>
+        <button class="small-btn" type="submit">Agregar cuenta <span>＋</span></button>
+      </form>
+    </dialog>
+  </main>
+
+  <!-- MODAL DE SUSCRIPCIÓN (PAYWALL) -->
+<dialog class="action-modal" id="paywallModal">
+  <div class="modal-content" style="text-align: center; padding: 32px 24px;">
+    <div class="modal-mark" style="font-size: 40px; margin-bottom: 10px;">🚀</div>
+    <h2 style="font-size: 28px; margin-bottom: 8px;">Pásate a miEco Pro</h2>
+    <p class="modal-copy">Desbloquea el poder total de tus finanzas y sincroniza sin límites.</p>
+
+    <div class="plans-container" style="display: grid; gap: 12px; margin: 24px 0;">
+      <!-- Plan Mensual -->
+      <button class="plan-card" id="subscribeMonthly" style="background: var(--panel); border: 2px solid var(--line); padding: 16px; border-radius: 16px; color: white; cursor: pointer; text-align: left; transition: 0.3s;">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-weight: 700;">Mensual</span>
+          <span style="color: var(--lime); font-weight: 800;">$12.900 <small style="font-size: 10px; color: var(--sub);">/mes</small></span>
+        </div>
+        <p style="font-size: 11px; color: var(--sub); margin-top: 4px;">Ideal para empezar a organizar tu mes.</p>
+      </button>
+
+      <!-- Plan Anual (Destacado) -->
+      <button class="plan-card" id="subscribeAnnual" style="background: var(--panel); border: 2px solid var(--lime); padding: 16px; border-radius: 16px; color: white; cursor: pointer; text-align: left; position: relative;">
+        <span style="position: absolute; top: -10px; right: 10px; background: var(--lime); color: var(--ink); font-size: 9px; font-weight: 800; padding: 2px 8px; border-radius: 999px;">MÁS AHORRO</span>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-weight: 700;">Anual</span>
+          <span style="color: var(--lime); font-weight: 800;">$89.900 <small style="font-size: 10px; color: var(--sub);">/año</small></span>
+        </div>
+        <p style="font-size: 11px; color: var(--sub); margin-top: 4px;">Un solo pago. Todo un año de tranquilidad.</p>
+      </button>
+    </div>
+
+    <ul style="text-align: left; font-size: 12px; color: var(--sub); margin-bottom: 20px; display: grid; gap: 8px;">
+      <li>✅ Cuentas y tarjetas ilimitadas</li>
+      <li>✅ Escaneo de tiquetes (OCR) inteligente</li>
+      <li>✅ Presupuestos por categoría</li>
+      <li>✅ Exportación completa a Excel/JSON</li>
+    </ul>
+
+    <button class="small-btn" id="btnRestorePurchases" style="background: transparent; color: var(--sub); border: none; text-decoration: underline; font-size: 11px; cursor: pointer;">Restaurar compras</button>
+    <button class="link-btn" onclick="$('paywallModal').close()" style="margin-top: 10px;">Seguir con el plan gratuito</button>
+  </div>
+</dialog>
+
+
+<script src="https://unpkg.com/@revenuecat/purchases-js@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@4/dist/tesseract.min.js"></script>
+  <script src="js/00-supabase-client.js?v=28"></script>
+  <script src="js/01-sync.js?v=28"></script>
+  <script src="js/02-state.js?v=28"></script>
+  <script src="js/03-render.js?v=28"></script>
+  <script src="js/04-auth.js?v=28"></script>
+  <script src="js/05-handlers.js?v=28"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>miEco — Política de Privacidad y Términos de Servicio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Bricolage+Grotesque:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=25">
+<style>
+  .legal-wrap { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; color: var(--text); }
+  .legal-nav { display: flex; gap: 10px; margin-bottom: 28px; flex-wrap: wrap; }
+  .legal-nav a { padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; color: var(--sub); font: 700 12px 'Sora'; text-decoration: none; }
+  .legal-nav a:hover, .legal-nav a.active { color: var(--ink); background: var(--lime); border-color: var(--lime); }
+  .legal-wrap h1 { font: 800 30px 'Bricolage Grotesque'; margin-bottom: 6px; }
+  .legal-updated { color: var(--sub); font-size: 12px; font-weight: 600; margin-bottom: 32px; }
+  .legal-section { margin-bottom: 34px; }
+  .legal-section h2 { font: 700 18px 'Bricolage Grotesque'; margin-bottom: 10px; color: var(--lime); }
+  .legal-section h3 { font: 700 14px 'Sora'; margin: 16px 0 6px; color: var(--text); }
+  .legal-section p, .legal-section li { font: 400 14px/1.65 'Sora'; color: var(--sub); margin-bottom: 10px; }
+  .legal-section strong { color: var(--text); }
+  .legal-section ul { padding-left: 20px; margin-bottom: 10px; }
+  .legal-back { display: inline-block; margin-bottom: 24px; color: var(--sub); font: 700 12px 'Sora'; text-decoration: none; }
+  .legal-back:hover { color: var(--lime); }
+  .legal-callout { padding: 16px 18px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); margin-bottom: 18px; }
+  .legal-callout p { margin: 0; color: var(--text); font-size: 13px; }
+  #terminos { display: none; }
+  body.show-terminos #terminos { display: block; }
+  body.show-terminos #privacidad { display: none; }
+</style>
+</head>
+<body style="background: var(--page);">
+<div class="legal-wrap">
+  <a class="legal-back" href="index.html">← Volver a miEco</a>
+  <nav class="legal-nav">
+    <a href="#privacidad" onclick="document.body.classList.remove('show-terminos')" class="nav-privacidad">Política de Privacidad</a>
+    <a href="#terminos" onclick="document.body.classList.add('show-terminos')" class="nav-terminos">Términos de Servicio</a>
+  </nav>
+
+  <section id="privacidad">
+    <h1>Política de Privacidad</h1>
+    <div class="legal-updated">Última actualización: agosto de 2026</div>
+
+    <div class="legal-callout">
+      <p>miEco es una app de finanzas personales. Esta política explica qué información recolectamos, para qué la usamos, dónde se almacena y cómo puedes solicitar que se elimine.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>1. Quiénes somos</h2>
+      <p>miEco es una aplicación de gestión de finanzas personales operada para usuarios en Colombia y, según disponibilidad, otros países. Si tienes preguntas sobre esta política, puedes escribirnos a <strong>soporte@mieco.app</strong>.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. Qué información recolectamos</h2>
+      <h3>2.1 Información de cuenta</h3>
+      <ul>
+        <li>Correo electrónico y contraseña (la contraseña se almacena cifrada por nuestro proveedor de autenticación, nunca en texto plano).</li>
+        <li>Nombre completo o apodo que elijas mostrar en la app.</li>
+      </ul>
+      <h3>2.2 Información financiera que tú registras</h3>
+      <ul>
+        <li>Ingresos, gastos, ahorros y metas de ahorro que registres manualmente.</li>
+        <li>Nombres de tus cuentas o tarjetas (ej. "Nu", "Bancolombia"), y saldos que tú ingreses — <strong>no accedemos a tus cuentas bancarias reales</strong>, no hay ninguna conexión con bancos: todo lo que ves en miEco es información que tú mismo escribes.</li>
+        <li>Presupuestos por categoría y gastos recurrentes que configures.</li>
+        <li>Si usas el escaneo de tiquetes (OCR), el texto que la app extrae de la imagen para prellenar el formulario de gasto — <strong>la imagen se procesa dentro de tu propio navegador o dispositivo</strong>, no se sube a nuestros servidores.</li>
+      </ul>
+      <h3>2.3 Información de suscripción</h3>
+      <p>Si adquieres el plan Pro, el cobro es procesado directamente por Apple (App Store) o Google (Google Play) — <strong>miEco no almacena ni tiene acceso a tu información de tarjeta o método de pago</strong>. Solo recibimos una confirmación de que tu suscripción está activa, para desbloquear las funciones correspondientes.</p>
+      <h3>2.4 Información técnica básica</h3>
+      <p>Datos de uso general para diagnóstico de errores (por ejemplo, si una función falla), sin fines publicitarios.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. Dónde se almacenan tus datos</h2>
+      <p>Tus datos se guardan en la infraestructura de <strong>Supabase</strong>, nuestro proveedor de base de datos y autenticación, protegidos con políticas de acceso que garantizan que <strong>solo tú puedes ver o modificar tu propia información</strong> — ningún otro usuario, ni siquiera con una cuenta en miEco, puede acceder a tus datos financieros. Dependiendo de la región configurada para el proyecto, estos servidores pueden estar ubicados fuera de Colombia (típicamente en Estados Unidos).</p>
+      <p>Además, una copia de tus datos se guarda localmente en tu dispositivo (almacenamiento del navegador) para que la app funcione incluso sin conexión a internet, sincronizándose con la nube en cuanto vuelves a estar conectado.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. Para qué usamos tu información</h2>
+      <ul>
+        <li>Mostrarte tu propio dashboard financiero, gráficas y reportes.</li>
+        <li>Sincronizar tus datos entre tus dispositivos (celular, computador).</li>
+        <li>Verificar tu identidad al iniciar sesión.</li>
+        <li>Gestionar tu suscripción, si tienes el plan Pro.</li>
+        <li>Responder tus solicitudes de soporte.</li>
+      </ul>
+      <p><strong>No vendemos ni compartimos tu información financiera con terceros con fines publicitarios o comerciales.</strong></p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Tus derechos sobre tus datos</h2>
+      <p>De acuerdo con la Ley 1581 de 2012 de Colombia (y, cuando aplique, otras normas de protección de datos), tienes derecho a:</p>
+      <ul>
+        <li><strong>Acceder</strong> a toda la información que tenemos sobre ti — puedes hacerlo tú mismo en cualquier momento desde la sección "Perfil → Exportar datos" de la app.</li>
+        <li><strong>Corregir</strong> tu información de perfil directamente en la app.</li>
+        <li><strong>Eliminar</strong> tu cuenta y todos tus datos, escribiendo a <strong>soporte@mieco.app</strong> desde el correo asociado a tu cuenta. Procesamos las solicitudes de eliminación dentro de los 30 días siguientes.</li>
+        <li><strong>Revocar tu consentimiento</strong> en cualquier momento, lo que implica dejar de usar la app y solicitar la eliminación de tu cuenta.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Seguridad</h2>
+      <p>Usamos cifrado en tránsito (HTTPS) para toda comunicación entre la app y nuestros servidores, y control de acceso a nivel de base de datos (Row Level Security) para que cada persona solo pueda leer o modificar su propia información. Ningún sistema es 100% infalible, pero tomamos medidas razonables para proteger tus datos.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>7. Menores de edad</h2>
+      <p>miEco no está dirigida a menores de 18 años. No recolectamos deliberadamente información de menores de edad.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>8. Cambios a esta política</h2>
+      <p>Si actualizamos esta política de forma significativa, te lo notificaremos dentro de la app antes de que el cambio entre en vigencia.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>9. Contacto</h2>
+      <p>Para cualquier pregunta sobre privacidad o para ejercer tus derechos: <strong>soporte@mieco.app</strong></p>
+    </div>
+  </section>
+
+  <section id="terminos">
+    <h1>Términos de Servicio</h1>
+    <div class="legal-updated">Última actualización: agosto de 2026</div>
+
+    <div class="legal-callout">
+      <p>Al usar miEco, aceptas estos términos. Léelos con calma — especialmente la sección de suscripciones.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>1. Descripción del servicio</h2>
+      <p>miEco es una aplicación de gestión de finanzas personales que te permite registrar ingresos, gastos, ahorros, presupuestos y metas financieras. <strong>miEco no es una entidad financiera, no ofrece asesoría financiera profesional, y no está conectada a tus cuentas bancarias reales</strong> — es una herramienta de registro y organización basada en la información que tú mismo ingresas.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>2. Cuenta de usuario</h2>
+      <ul>
+        <li>Debes ser mayor de 18 años para crear una cuenta.</li>
+        <li>Eres responsable de mantener la confidencialidad de tu contraseña.</li>
+        <li>Eres responsable de la exactitud de la información financiera que registres.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>3. Planes y suscripciones</h2>
+      <h3>3.1 Plan gratuito</h3>
+      <p>Incluye funciones básicas de registro con límites (una cuenta en la billetera, sin escaneo de tiquetes, sin presupuestos por categoría ni exportación por rango de fechas).</p>
+      <h3>3.2 Plan Pro (suscripción)</h3>
+      <p>Desbloquea todas las funciones de la app mediante un cobro <strong>recurrente y auto-renovable</strong>, mensual o anual según el plan que elijas al momento de suscribirte.</p>
+      <ul>
+        <li><strong>Auto-renovación:</strong> tu suscripción se renueva automáticamente al final de cada período (mes o año), a menos que la canceles antes de la fecha de renovación.</li>
+        <li><strong>Cobro:</strong> el pago se procesa a través de tu cuenta de App Store o Google Play — miEco no gestiona directamente tu información de pago.</li>
+        <li><strong>Cancelación:</strong> puedes cancelar en cualquier momento desde la configuración de tu cuenta de Apple o Google (Ajustes → Suscripciones). Al cancelar, conservas el acceso Pro hasta el final del período ya pagado.</li>
+        <li><strong>Reembolsos:</strong> los reembolsos se rigen por las políticas de Apple o Google, según donde hayas adquirido la suscripción — miEco no procesa reembolsos directamente.</li>
+        <li><strong>Cambios de precio:</strong> si en el futuro cambiamos el precio de la suscripción, te notificaremos con anticipación antes de que el nuevo precio te sea cobrado.</li>
+      </ul>
+    </div>
+
+    <div class="legal-section">
+      <h2>4. Uso aceptable</h2>
+      <p>No puedes usar miEco para actividades ilegales, intentar acceder a cuentas de otros usuarios, ni realizar ingeniería inversa de la aplicación.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>5. Limitación de responsabilidad</h2>
+      <p><strong>miEco es una herramienta de organización, no un asesor financiero.</strong> Las decisiones financieras que tomes basándote en la información mostrada en la app son tu responsabilidad. No garantizamos que la app esté libre de errores en todo momento, aunque trabajamos activamente para corregirlos. En la medida permitida por la ley, miEco no será responsable por pérdidas financieras derivadas del uso de la aplicación.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>6. Disponibilidad del servicio</h2>
+      <p>Hacemos nuestro mejor esfuerzo para mantener la app disponible, pero puede haber interrupciones por mantenimiento o causas fuera de nuestro control (por ejemplo, de nuestro proveedor de infraestructura).</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>7. Terminación de cuenta</h2>
+      <p>Puedes eliminar tu cuenta en cualquier momento escribiendo a soporte. Nos reservamos el derecho de suspender cuentas que violen estos términos.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>8. Ley aplicable</h2>
+      <p>Estos términos se rigen por las leyes de la República de Colombia.</p>
+    </div>
+
+    <div class="legal-section">
+      <h2>9. Contacto</h2>
+      <p><strong>soporte@mieco.app</strong></p>
+    </div>
+  </section>
+</div>
+<script>
+  if (window.location.hash === '#terminos') document.body.classList.add('show-terminos');
+</script>
+</body>
+</html>
